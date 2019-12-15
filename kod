@@ -1,0 +1,76 @@
+#include <iostream>
+#include<conio.h>
+#include<iomanip>
+using namespace std;
+
+class standart
+{
+protected:
+	int   odaucret, tvucret, klimaucreti, gunsayisi, net, odaservis;
+	float topucret;
+public:
+
+	standart() :odaucret(0), tvucret(0), klimaucreti(0), gunsayisi(0), net(0), odaservis(0)
+	{}
+	void ucrethesapla(int od, int tv, int klima, int gun)
+	{
+		topucret = (od + tv + klima) * gun;
+	}
+	void goster()
+	{
+		cout << "standart oda icin toplam odenmesi gereken tutar=" << topucret << endl;
+
+	}
+
+};
+class luks :public standart
+{
+private:
+	float topucret1;
+
+public:
+
+	void ucrethesapla1(int oducrt, int tvucrt, int klm, int gnsys, int nt, int odservis)
+	{
+		topucret1 = (oducrt + tvucrt + klm + nt + odservis) * gnsys;
+
+	}
+
+	void goster1()
+	{
+		cout << "luks oda icin toplam odenmesi gereken tutar=" << topucret1 << endl;
+	}
+};
+int main()
+{
+	standart oda1;
+	luks oda2;
+	int odaucret, tvucret, klimaucreti, gunsayisi, net, odaservis;
+
+
+	cout << "-----------OTEL RESEPSİYON PROGRAMINA HOSGELDINIZ----------" << endl;
+	cout << endl;
+	cout << "STANDART ODALAR ICIN" << endl;
+	cout << "Oda ucretini giriniz=" << endl;
+	cin >> odaucret;
+	cout << "tv ucretini giriniz=" << endl;
+	cin >> tvucret;
+	cout << "klima ucretini giriniz=" << endl;
+	cin >> klimaucreti;
+	cout << "kac gun kalacaksiniz=" << endl;
+	cin >> gunsayisi;
+	cout << "---------------------------" << endl;
+	cout << "luks odalar icin internet ucretini giriniz=" << endl;
+	cin >> net;
+	cout << "luks odalar icin odaservis ucretini giriniz=" << endl;
+	cin >> odaservis;
+
+	oda1.ucrethesapla(odaucret, tvucret, klimaucreti, gunsayisi);
+	oda1.goster();
+	oda2.ucrethesapla1(odaucret, tvucret, klimaucreti, gunsayisi, net, odaservis);
+	oda2.goster1();
+
+	
+	return 0;
+
+}
