@@ -1,76 +1,123 @@
-#include <iostream>
-#include<conio.h>
-#include<iomanip>
-using namespace std;
-
-class standart
-{
-protected:
-	int   odaucret, tvucret, klimaucreti, gunsayisi, net, odaservis;
-	float topucret;
-public:
-
-	standart() :odaucret(0), tvucret(0), klimaucreti(0), gunsayisi(0), net(0), odaservis(0)
-	{}
-	void ucrethesapla(int od, int tv, int klima, int gun)
-	{
-		topucret = (od + tv + klima) * gun;
-	}
-	void goster()
-	{
-		cout << "standart oda icin toplam odenmesi gereken tutar=" << topucret << endl;
-
-	}
-
+#include<iostream>
+#include<locale.h>
+using namespace std; 
+class otel{
+	public:
+		int oda,klima,tv,servis,mini,gun,toplam;
 };
-class luks :public standart
-{
-private:
-	float topucret1;
 
-public:
 
-	void ucrethesapla1(int oducrt, int tvucrt, int klm, int gnsys, int nt, int odservis)
-	{
-		topucret1 = (oducrt + tvucrt + klm + nt + odservis) * gnsys;
-
+int main(){
+	otel a;
+	
+	a.toplam=0;
+	int *pointer;
+	setlocale(LC_ALL,"Turkish");
+	cout<<"-----OTEL FİYAT BİLGİ BÖLÜMÜNE HOŞGELDİNİZ-----"<<endl;
+	cout<<"Standart Oda: 100TL\nLüks Oda: 300TL\nKlima: 50TL\nTV:30TL\nOda Servisi: 40TL\nMinibar: 20TL"<<endl;
+	cout<<"Standart Oda için 1'e basınız / Lüks Oda için 2'ye basınız."<<endl;
+	cin>>a.oda;
+		if(a.oda==1){
+		a.toplam=a.toplam+100;
+		pointer=&a.toplam;
+		*pointer=100;
+		cout<<"Toplam: "<<a.toplam<<"TL"<<endl;
 	}
-
-	void goster1()
-	{
-		cout << "luks oda icin toplam odenmesi gereken tutar=" << topucret1 << endl;
+	else if(a.oda==2){
+		a.toplam=a.toplam+300;
+		pointer=&a.toplam;
+		*pointer=300;
+		cout<<"Toplam: "<<a.toplam<<"TL"<<endl;
 	}
-};
-int main()
-{
-	standart oda1;
-	luks oda2;
-	int odaucret, tvucret, klimaucreti, gunsayisi, net, odaservis;
-
-
-	cout << "-----------OTEL RESEPSİYON PROGRAMINA HOSGELDINIZ----------" << endl;
-	cout << endl;
-	cout << "STANDART ODALAR ICIN" << endl;
-	cout << "Oda ucretini giriniz=" << endl;
-	cin >> odaucret;
-	cout << "tv ucretini giriniz=" << endl;
-	cin >> tvucret;
-	cout << "klima ucretini giriniz=" << endl;
-	cin >> klimaucreti;
-	cout << "kac gun kalacaksiniz=" << endl;
-	cin >> gunsayisi;
-	cout << "---------------------------" << endl;
-	cout << "luks odalar icin internet ucretini giriniz=" << endl;
-	cin >> net;
-	cout << "luks odalar icin odaservis ucretini giriniz=" << endl;
-	cin >> odaservis;
-
-	oda1.ucrethesapla(odaucret, tvucret, klimaucreti, gunsayisi);
-	oda1.goster();
-	oda2.ucrethesapla1(odaucret, tvucret, klimaucreti, gunsayisi, net, odaservis);
-	oda2.goster1();
+	else{
+		while(a.oda!=1 && a.oda!=2){
+			cout<<"Hatalı giriş yaptınız lütfen 1 veya 2 numarayı seçiniz..."<<endl;
+			cin>>a.oda;
+		}
+	}
+	cout<<"Klima istiyorsanız 1'e istemiyorsanız 0'a basınız."<<endl;
+	cin>>a.klima;
+	if(a.klima==1){
+		
+		pointer=&a.toplam;
+		*pointer=a.toplam+50;
+		cout<<"Toplam: "<<a.toplam<<"TL"<<endl;
+	}
+	else if(a.klima==0){
+		pointer=&a.toplam;
+		*pointer=a.toplam+0;
+		cout<<"Toplam: "<<a.toplam<<"TL"<<endl;
+	}
+	else{
+		while(a.klima!=1 && a.klima!=0){
+			cout<<"Hatalı giriş yaptınız lütfen 0 veya 1 numarayı seçiz..."<<endl;
+			cin>>a.klima;
+		}
+	}
+	cout<<"TV istiyorsanız 1'e istemiyorsanız 0'a basınız."<<endl;
+	cin>>a.tv;
+	if(a.tv==1){
+		pointer=&a.toplam;
+		*pointer=a.toplam+30;
+		cout<<"Toplam: "<<a.toplam<<"TL"<<endl;
+	}
+	else if(a.tv==0){
+		pointer=&a.toplam;
+		*pointer=a.toplam+0;
+		cout<<"Toplam: "<<a.toplam<<"TL"<<endl;
+	}
+	else{
+		while(a.tv!=1 && a.tv!=0){
+			cout<<"Hatalı giriş yaptınız lütfen 0 veya 1 numarayı seçiz..."<<endl;
+			cin>>a.tv;
+		}
+	}
+	cout<<"Oda servisi istiyorsanız 1'e istemiyorsanız 0'a basınız."<<endl;
+	cin>>a.servis;
+	if(a.servis==1){
+		pointer=&a.toplam;
+		*pointer=a.toplam+40;
+		cout<<"Toplam: "<<a.toplam<<"TL"<<endl;
+	}
+	else if(a.servis==0){
+		pointer=&a.toplam;
+		*pointer=a.toplam+0;
+		cout<<"Toplam: "<<a.toplam<<"TL"<<endl;
+	}
+	else{
+		while(a.servis!=1 && a.servis!=0){
+			cout<<"Hatalı giriş yaptınız lütfen 0 veya 1 numarayı seçiz..."<<endl;
+			cin>>a.servis;
+		}
+	}
+	cout<<"Minibar istiyorsanız 1'e istemiyorsanız 0'a basınız."<<endl;
+	cin>>a.mini;
+	if(a.mini==1){
+		pointer=&a.toplam;
+		*pointer=a.toplam+20;
+		cout<<"Toplam: "<<a.toplam<<"TL"<<endl;
+	}
+	else if(a.mini==0){
+		pointer=&a.toplam;
+		*pointer=a.toplam+0;
+		cout<<"Toplam: "<<a.toplam<<"TL"<<endl;
+	}
+	else{
+		while(a.mini!=1 && a.mini!=0){
+			cout<<"Hatalı giriş yaptınız lütfen 0 veya 1 numarayı seçiz..."<<endl;
+			cin>>a.mini;
+		}
+	}
+	cout<<"Kaç gün kalmak istiyorsunuz ? "<<endl;
+	cin>>a.gun;
+	
+	cout<<"Ödemeniz gereken fiyat: "<<a.toplam*a.gun<<"TL";
+	
 
 	
-	return 0;
 
+    
+   
+   return 0;   
+       
 }
